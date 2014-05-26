@@ -1,0 +1,326 @@
+"  author: pigfly 
+"    date: 2013-11-30
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vundle
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+   filetype off                  " required
+
+   " set the runtime path to include Vundle and initialize
+   set rtp+=~/.vim/bundle/vundle/
+   call vundle#rc()
+   " alternatively, pass a path where Vundle should install bundles
+   "let path = '~/some/path/here'
+   "call vundle#rc(path)
+
+   " let Vundle manage Vundle, required
+   Bundle 'gmarik/vundle'
+
+   " The following are examples of different formats supported.
+   " Keep bundle commands between here and filetype plugin indent on.
+   " scripts on GitHub repos
+   Bundle 'tpope/vim-fugitive'
+   Bundle 'Lokaltog/vim-easymotion'
+   Bundle 'tpope/vim-rails.git'
+   " The sparkup vim script is in a subdirectory of this repo called vim.
+   " Pass the path to set the runtimepath properly.
+   Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+   " scripts from http://vim-scripts.org/vim/scripts.html
+   Bundle 'L9'
+   Bundle 'FuzzyFinder'
+   " scripts not on GitHub
+   Bundle 'git://git.wincent.com/command-t.git'
+   " git repos on your local machine (i.e. when working on your own plugin)
+   Bundle 'file:///home/gmarik/path/to/plugin'
+   " ...
+
+   filetype plugin indent on     " required
+   "
+   " Brief help
+   " :BundleList          - list configured bundles
+   " :BundleInstall(!)    - install (update) bundles
+   " :BundleSearch(!) foo - search (or refresh cache first) for foo
+   " :BundleClean(!)      - confirm (or auto-approve) removal of unused bundles
+   "
+   " see :h vundle for more details or wiki for FAQ
+   " NOTE: comments after Bundle commands are not allowed.
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Global Variable
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" change default map leader of c.vim
+let g:C_MapLeader = ','
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vimwiki Global Setting 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" folding enable
+let g:vimwiki_folding = 1
+"
+" wiki Word auto-link 
+let g:vimwiki_camel_case = 1
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Color Scheme
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" enable the syntax color
+syntax enable
+"
+" colorscheme from /usr/share/vim/vimcurrent
+colorscheme solarized
+set background=dark
+let g:solarized_termcolors=256
+
+"colorscheme molokai
+"set background=dark
+
+"colorscheme vividchalk
+"set background=dark
+
+"
+"set the vim-terimal to 256 color
+"set t_Co=256
+"let g:solarized_termcolors=256
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Comman Setting
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" " set mouse support of vim in Terminal
+set mouse=a
+"
+" " file type plugin indent on
+filetype plugin on
+" " in order to turn on the omnicppcomplete plugin
+set nocp 
+" "
+" " set the wrapper
+"
+set linebreak
+"
+" " set the maximum text line length
+"
+set textwidth=80
+" " not compatible with vi
+"
+set nocompatible
+"
+" " length of input history 
+set history=400
+"
+" " set ruler status
+set ruler
+"
+" " number at the beginning of each line
+set number
+"set hlsearch
+set noincsearch
+"set expandtab
+set noerrorbells
+set novisualbell
+set t_vb= "close visual bell
+set foldmethod=marker
+set tabstop=4
+set shiftwidth=4
+set nobackup
+set nowritebackup
+"set noswapfile
+set smarttab
+set smartindent
+set autoindent
+set cindent
+set wrap
+set autoread
+set cmdheight=1
+set showtabline=2 
+"set clipboard+=unnamed
+set tabpagemax=20
+set laststatus=2
+set statusline=\ [File]\ %F%m%r%h\ %w\ \ [PWD]\ %r%{CurrectDir()}%h\ \ %=[Line]\ %l,%c\ %=\ %P
+" set the font
+set gfn=WenQuanYi\ 10
+"
+
+function! CurrectDir()
+    let curdir = substitute(getcwd(), "", "", "g")
+    return curdir
+endfunction
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Indenting Setting
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" " how many space should an indention leave
+set shiftwidth=4
+"
+" " the width of every Tab
+set tabstop=8
+"
+" " No replace Tab of Space
+set noexpandtab
+"
+" " current line's idention = next line's indention
+set autoindent
+"
+" " C-style indention
+set cindent
+"
+" " specific C-style indention, only AVAIABLE with cindent
+" " here, we make the canonical GNU Programming Style
+"cinoptions=>4s,n-2,{2,^-2,:2,=2,g0,h2,p5,t0,+2,(0,u0,w1,m1 
+" " cause vim can not tell an input from paste in Terminal :-(
+"set paste
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Searching, Replacing & Regular expression
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Tips : help *, /\<, #
+
+" " map in normal mode, bind <F2> to no hightlight search
+nmap <F2> :nohlsearch<CR>
+"
+" " highlight the brackets match
+set showmatch
+"
+" " set the highlight duration time
+set matchtime=5
+"
+" " step-by-step highlight matched pattern
+set incsearch
+"
+" " the status line
+set statusline=\ [File]\ %F%m%r%h\ %w\ \ [PWD]\ %r%{CurrectDir()}%h\ \ %=[Line]\ %l,%c\ %=\ %P
+"
+" " always display status line
+set laststatus=2
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Encoding Setting
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" " if adding the mulit_byte option when compiling
+if has("multi_byte")
+" " set the build-in encoding of vim    
+    set encoding=utf-8
+" " set the encoding of Terminal, specificed to keyboard input and
+" " display    
+    set termencoding=utf-8
+" " set how to auto-type set    see help for string format    
+    set formatoptions+=mMtc
+" " set the buffer encoding     
+    set fencs=utf-8,gbk,chinese
+" " judge the lang chinese, japanes, korea
+    if v:lang =~? '^\(zh\)\|\(ja\)\|\(ko\)'
+" " let the vim know how to deal with eastern Asia ASC|| ambiguity      
+        set ambiwidth=double
+    endif
+
+else
+    echoerr "Sorry, this version of (g)vim was not compiled with +multi_byte"
+endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" key stock
+map tn :tabnext<cr>
+map tp :tabprevious<cr>
+map td :tabnew .<cr>
+map te :tabedit
+map tc :tabclose<cr>
+map cs :!php -l %<cr>
+map ts :tselect<cr>
+
+" key mapping for Scrollcolor
+map <F10> :NEXTCOLOR<cr>
+map <F11> :PREVCOLOR<cr>
+" vim: set et sw=4 ts=4 sts=4 fdm=marker ff=unix fenc=utf8
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Ctags Setting
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" English Spell Checking
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:spchkmouse =1
+
+let g:spchkautonext=1
+
+let g:spchkdialect="usa"
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" TxtBrowser plugin Setting
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+au BufRead,BufNewFile *.txt setlocal ft=txt
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Curse return to the last modified position 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+call pathogen#infect()
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Java specify Setting
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" F9/F10 compile/run default file.
+" F11/F12 compile/run alternate file.
+
+map <F9> :set makeprg=javac\ %<CR>:make<CR>
+map <F8> :!echo %\|awk -F. '{print $1}'\|xargs java<CR>
+map <F11> :set makeprg=javac\ #<CR>:make<CR>
+map <F12> :!echo #\|awk -F. '{print $1}'\|xargs java<CR>
+
+map! <F9> <Esc>:set makeprg=javac\ %<CR>:make<CR>
+map! <F8> <Esc>:!echo %\|awk -F. '{print $1}'\|xargs java<CR>
+map! <F11> <Esc>set makeprg=javac\ #<CR>:make<CR>
+map! <F12> <Esc>!echo #\|awk -F. '{print $1}'\|xargs java<CR>
+
+" Tip: load a file into the default buffer, and its driver
+" into the alternate buffer, then use F9/F12 to build/run.
+" Note: # (alternate filename) isn't set until you :next to it!
+" Tip2: You can make then run without hitting ENTER to continue. F9-F12
+
+" With these you can cl/cn/cp (quickfix commands) to browse the errors
+" after you compile it with :make
+
+set makeprg=javac\ %
+set errorformat=%A:%f:%l:\ %m,%-Z%p^,%-C%.%#
+
+" If two files are loaded, switch to the alternate file, then back.
+" That sets # (the alternate file).
+if argc() == 2
+  n
+  e #
+endif
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
